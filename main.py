@@ -12,15 +12,11 @@ def check_transaction(tx):
         print('transaction not found!')
     else:
         hash = transaction['hash']
-        size = len(str(transaction['timestamp']))
-        timestamp = str(transaction['timestamp'])
-        timestamp = timestamp[:size - 3]
-        timestamp = int(timestamp)
+        timestamp = transaction['timestamp']
+        timestamp = timestamp / 1000
         time_passed = str(datetime.timedelta(seconds= time - timestamp))
-        size = len(str(transaction['timestamp']))
-        amount = str(transaction['contractData']['amount'])
-        amount = amount[:size - 9]
-        amount = int(amount)
+        amount = transaction['contractData']['amount']
+        amount = amount / 1000000
         price = requests.get('http://api.coinlayer.com/api/live?access_key=8939244a1f214d141489aa1b908d57ec')
         price = price.json()
         price =price['rates']['TRX']
