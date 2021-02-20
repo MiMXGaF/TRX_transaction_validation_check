@@ -27,3 +27,4 @@ def check_transaction(tx):
 
 tx = input('give tx hash : ')
 check_transaction(tx)
+cmd = input('press any key to exit')
